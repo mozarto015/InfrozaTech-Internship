@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+<!-- Bootstrap CSS CDN -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap JavaScript Bundle CDN -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+    <h1> URL Shortener </h1>
+    <form action="/shortUrls" method="POST" class="my-4 form-inline">
+        <label for="fullURL" class="visually-hidden">URL</label>
+        <input placeholder="Paste Url" type="url" name="fullURL" id="fullURL" class="col-md-8">
+        <button type="submit" class="btn btn-success" >Shorten URL</button>
+    </form>
+
+    <table class="table table-striped table-bordered table-responsive">
+        <thead>
+            <tr>
+                <th>Full URL</th>
+                <th>Short URL</th>
+                <th>Clicks</th>
+            </tr>
+    </thead>
+    <tbody>
+        <% shortUrls.forEach(url => { %>
+        <tr>
+            <td><a href="<%= url.fullURL %>"><%= url.fullURL %></a></td>
+            <td><a href="<%= url.shortURL %>"><%= url.shortURL %></a></td>
+            <td><%= url.clicks %></td>
+        </tr>
+        <% }) %>
+    </tbody>
+</table>
+</div>
+</body>
+</html>
